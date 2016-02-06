@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]
+then
+ echo "usage: $0 <containername>"
+ exit 2
+fi 
+
+containername=$(docker ps | grep -m1 "$1" | awk '{ print $1 }')
+
+echo $containername

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+
+if [ -z "$1" ]
+then
+ echo "usage: $0 <containername>"
+ exit 2
+fi 
+
+containerid=$(dkidbyname "$1")
+
+containerip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$containerid")
+
+echo $containerip
+

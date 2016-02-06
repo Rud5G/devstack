@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]
+then
+ echo "usage: $0 <containername>"
+ exit 2
+fi 
+
+docker exec -i -t $(dkidbyname phpstack_front) bash
+
