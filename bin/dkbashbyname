@@ -6,5 +6,5 @@ then
  exit 2
 fi 
 
-docker exec -i -t $(dkidbyname phpstack_front) bash
+docker exec -i -t $(dkidbyname $1) bash
 
