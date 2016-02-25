@@ -29,6 +29,11 @@ $ docker-compose up
 To stop, use [ctrl]+C
 
 
+
+```sh
+$ docker ps
+```
+
 the IP address of the Docker Machine 
 
 ```sh
@@ -37,6 +42,12 @@ $ dkipbyname devstack_web
 
 Optional setup the ip-address from the above command in /etc/hosts
 
+
+## (Re-)Build
+
+```sh
+sudo rm -rf logs/* www/magento/htdocs/var/* && docker-compose build
+```
 
 
 ## WIP MANUAL
@@ -50,4 +61,4 @@ $ mkdir /var/www/phpmyadmin/htdocs
 $ /usr/bin/composer create-project phpmyadmin/phpmyadmin /var/www/phpmyadmin/htdocs --repository-url=https://www.phpmyadmin.net/packages.json
 $ hhvm composer.phar create-project phpmyadmin/phpmyadmin /var/www/phpmyadmin/htdocs --repository-url=https://www.phpmyadmin.net/packages.json
 ```
- 
+
