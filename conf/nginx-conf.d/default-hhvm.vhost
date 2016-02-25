@@ -1,6 +1,6 @@
 server {
   server_name default.dev;
-  root        /var/www/default;
+  root        /var/www/default/htdocs;
   index       index.php;
 
   client_max_body_size 100M;
@@ -38,7 +38,7 @@ server {
     include       fastcgi_params;
     fastcgi_index index.php;
     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-    fastcgi_pass  unix:/var/run/php5-fpm.sock;
-    # fastcgi_pass  unix:/var/run/hhvm/hhvm.sock;
+    # fastcgi_pass  unix:/var/run/php5-fpm.sock;
+    fastcgi_pass  unix:/var/run/hhvm/hhvm.sock;
   }
 }

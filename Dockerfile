@@ -13,19 +13,19 @@ RUN rm -f /etc/nginx/conf.d/*
 
 # Install packages
 RUN apt-get update && apt-get install -my \
-  supervisor \
-  curl \
-  wget \
-  php5-curl \
-  php5-fpm \
-  php5-gd \
-  php5-memcached \
-  php5-mysql \
-  php5-mcrypt \
-  php5-sqlite \
-  php5-xdebug \
-  php-apc \
-  git
+    supervisor \
+    curl \
+    wget \
+    php5-curl \
+    php5-fpm \
+    php5-gd \
+    php5-memcached \
+    php5-mysql \
+    php5-mcrypt \
+    php5-sqlite \
+    php5-xdebug \
+    php-apc \
+    git
 
 # Ensure that PHP5 FPM is run as root.
 RUN sed -i "s/user = www-data/user = root/" /etc/php5/fpm/pool.d/www.conf
@@ -52,6 +52,10 @@ RUN apt-get update && apt-get install -y hhvm
 COPY conf/nginx.conf /etc/nginx/
 COPY conf/supervisord.conf /etc/supervisor/conf.d/
 COPY conf/php.ini /etc/php5/fpm/conf.d/40-custom.ini
+
+# Install composer
+COPY install-composer.sh /bin/install-composer.sh
+RUN bash -c "/bin/install-composer.sh"
 
 ################################################################################
 # Volumes

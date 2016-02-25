@@ -10,7 +10,7 @@ web:
     - redis:redis
   volumes:
     - ./www:/var/www
-    - ./sites:/etc/nginx/conf.d
+    - ./conf/nginx-conf.d:/etc/nginx/conf.d
     - ./logs:/var/log/supervisor
 
 mysql:

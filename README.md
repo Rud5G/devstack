@@ -34,3 +34,7 @@ You can access your configured sites via the IP address of the Docker Machine or
 Optional setup the ip-address from the above command in /etc/hosts
 
 
+```sh
+$ composer create-project phpmyadmin/phpmyadmin --repository-url=https://www.phpmyadmin.net/packages.json
+```
+ 
