@@ -54,9 +54,11 @@ COPY conf/nginx.conf /etc/nginx/
 COPY conf/supervisord.conf /etc/supervisor/conf.d/
 COPY conf/php.ini /etc/php5/fpm/conf.d/40-custom.ini
 
-# Install scripts composer/magento
+# Add install scripts magento
+COPY install/magento.sh /var/www/magento/install-magento.sh
+
+# Install scripts composer
 COPY install/composer.sh /usr/bin/install-composer.sh
-COPY install/magento.sh /usr/bin/install-magento.sh
 RUN bash -c "/usr/bin/install-composer.sh"
 RUN mv composer.phar /usr/bin/composer
 

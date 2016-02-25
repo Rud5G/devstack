@@ -1,6 +1,6 @@
 server {
-  server_name default-hhvm.dev;
-  root        /var/www/default/htdocs;
+  server_name phpmyadmin-hhvm.dev;
+  root        /var/www/phpmyadmin/htdocs;
   index       index.php;
 
   client_max_body_size 100M;

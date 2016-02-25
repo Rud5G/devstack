@@ -1,6 +1,6 @@
 server {
-  server_name default-hhvm.dev;
-  root        /var/www/default/htdocs;
+  server_name magento-hhvm.dev;
+  root        /var/www/magento/htdocs;
   index       index.php;
 
   client_max_body_size 100M;
