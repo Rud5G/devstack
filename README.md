@@ -26,15 +26,28 @@ Set up a Docker Machine and then run:
 $ docker-compose up
 ```
 
+To stop, use [ctrl]+C
+
+
+the IP address of the Docker Machine 
+
 ```sh
-$ bin/dkipbyname devstack_web
+$ dkipbyname devstack_web
 ```
 
-You can access your configured sites via the IP address of the Docker Machine or locally if you're running a Linux flavour and using Docker natively.
 Optional setup the ip-address from the above command in /etc/hosts
 
 
+
+## WIP MANUAL
+
+Optional add phpmyadmin 
 ```sh
-$ composer create-project phpmyadmin/phpmyadmin --repository-url=https://www.phpmyadmin.net/packages.json
+$ mkdir /var/www/phpmyadmin/htdocs
+```
+
+```sh
+$ /usr/bin/composer create-project phpmyadmin/phpmyadmin /var/www/phpmyadmin/htdocs --repository-url=https://www.phpmyadmin.net/packages.json
+$ hhvm composer.phar create-project phpmyadmin/phpmyadmin /var/www/phpmyadmin/htdocs --repository-url=https://www.phpmyadmin.net/packages.json
 ```
  

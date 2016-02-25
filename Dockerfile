@@ -25,7 +25,8 @@ RUN apt-get update && apt-get install -my \
     php5-sqlite \
     php5-xdebug \
     php-apc \
-    git
+    git \
+    vim
 
 # Ensure that PHP5 FPM is run as root.
 RUN sed -i "s/user = www-data/user = root/" /etc/php5/fpm/pool.d/www.conf
@@ -54,8 +55,9 @@ COPY conf/supervisord.conf /etc/supervisor/conf.d/
 COPY conf/php.ini /etc/php5/fpm/conf.d/40-custom.ini
 
 # Install composer
-COPY install-composer.sh /bin/install-composer.sh
-RUN bash -c "/bin/install-composer.sh"
+COPY install/composer.sh /usr/bin/install-composer.sh
+RUN bash -c "/usr/bin/install-composer.sh"
+RUN mv composer.phar /usr/bin/composer
 
 ################################################################################
 # Volumes
