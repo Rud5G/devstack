@@ -19,6 +19,8 @@ RUN apt-get update && apt-get install -my \
     php5-curl \
     php5-fpm \
     php5-gd \
+    php5-intl \
+    php5-json \
     php5-memcached \
     php5-mysql \
     php5-mcrypt \
@@ -27,13 +29,18 @@ RUN apt-get update && apt-get install -my \
     php-apc \
     mysql-client \
     git \
-    vim \
-    && docker-php-ext-install mbstring pdo_mysql iconv mcrypt zip \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr --with-jpeg-dir=/usr --with-png-dir=/usr \
-    && docker-php-ext-install intl gd mysqli opcache xsl xmlrpc \
-    && apt-get autoremove -y \
-    && apt-get clean \
-    && apt-get autoclean
+    vim
+
+# COPY ./docker-php-ext-configure /usr/bin/
+# COPY ./docker-php-ext-enable /usr/bin/
+# COPY ./docker-php-ext-install /usr/bin/
+
+# RUN docker-php-ext-install mbstring pdo_mysql iconv mcrypt zip \
+#     && docker-php-ext-configure gd --with-freetype-dir=/usr --with-jpeg-dir=/usr --with-png-dir=/usr \
+#     && docker-php-ext-install intl gd mysqli opcache xsl xmlrpc \
+#     && apt-get autoremove -y \
+#     && apt-get clean \
+#     && apt-get autoclean
 
 # Ensure that PHP5 FPM is run as root.
 RUN sed -i "s/user = www-data/user = root/" /etc/php5/fpm/pool.d/www.conf
